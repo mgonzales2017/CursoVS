@@ -16,5 +16,10 @@ namespace WpfApp1.Models
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Chofer} - {Compania}, {FechaInicio}, {FechaFin}";
+        }
+
     }
 }

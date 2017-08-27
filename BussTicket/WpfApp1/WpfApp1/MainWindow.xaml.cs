@@ -23,6 +23,7 @@ namespace WpfApp1
     {
         public Reservas Reserva { get; set; }
         public List<Rutas> Rutas { get; set; }
+        public List<Rutas> Resultados { get; set; }
         public List<Localizacion> Estaciones { get; set; }
 
         public MainWindow()
@@ -82,6 +83,25 @@ namespace WpfApp1
             this.Destino.ItemsSource = Estaciones;
             this.Destino.SelectedItem = Reserva.Destino;
             this.Fecha.SelectedDate = Reserva.Fecha;
+        }
+
+        private void Buscar_Click(object sender, RoutedEventArgs e)
+        {
+            BuscarViaje(Reserva);
+        }
+
+        public void BuscarViaje(Reservas reserva)
+        {
+            var query = from q in Rutas
+                        where q.Estaciones.Contains(reserva.Destino) && 
+                        q.Estaciones.Contains(reserva.Salida) && 
+                        q.FechaInicio >= reserva.Fecha
+                        select q;
+
+            //query = Rutas.Where(g => true).Select(g => g);
+
+            Resultados = query.ToList();
+            Lista.ItemsSource = Resultados;
         }
     }
 }
