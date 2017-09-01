@@ -1,0 +1,85 @@
+﻿@model List<DemoMVC2.Models.Producto>
+@*definimos el modelo*@
+
+@*@using System.Linq*@
+
+@{
+    Layout = null;
+    //Si queremos usar un layout
+    // Layout = Views/Shared/_Layout.cshtml;
+
+    var producto = new DemoMVC2.Models.Producto("random");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Lista</title>
+    <style type="text/css">
+        body {
+            font-family:sans-serif;
+            font-size:12px;
+        }
+        
+        p {
+            background-color:aliceblue;
+            border-color:deepskyblue;
+            padding: 10px 10px 10px 10px;
+            border-style:dotted;
+            border-width:1px;
+        }
+
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".test").toggle();
+        });
+        function Avisar() {
+            alert("Hola mundo");
+        }
+        function toggleFunc(producto) {
+            debugger;
+            var s = "#" + producto;
+            $(s).show();
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        <p>@Model.Count()</p>
+        <p>@Model.FirstOrDefault().ProductoId</p>
+        @if (Model.Count() > 0)
+        {
+            foreach (var p in Model)
+            { 
+                <button onclick="toggleFunc('@p.ProductoId')">@p.ProductoId</button>
+                <div id="@p.ProductoId" style="display:none;">
+                    Id: @p.ProductoId<br />
+                    Descripcion: @p.Descripcion<br />
+                    Precio: @p.Precio<br />
+                    Stock: @p.Stock<br />
+                    Unidad de Medida: @p.UnidadDeMedida<br />
+                    Imagen: <br />
+                    <img src="@p.ImagePath" alt="@p.Descripcion" />
+                </div>
+                <br />
+            }
+        }
+    </div>
+    <div>
+        <h2>objeto no existe en el controlador</h2>
+        <div>
+            Id: @producto.ProductoId<br />
+            Descripcion: @producto.Descripcion<br />
+            Precio: @producto.Precio<br />
+            Stock: @producto.Stock<br />
+            Unidad de Medida: @producto.UnidadDeMedida
+        </div>
+    </div>
+
+
+</body>
+</html>

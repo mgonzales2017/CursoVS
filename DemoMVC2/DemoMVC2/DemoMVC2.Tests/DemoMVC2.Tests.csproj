@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{87A55BE3-D3D4-4B90-8A8E-4B530E41C09B}</ProjectGuid>
+    <ProjectGuid>{8F27AC1B-402B-4E56-B483-EDB61253CCBD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeliveryOnline.Tests</RootNamespace>
-    <AssemblyName>DeliveryOnline.Tests</AssemblyName>
+    <RootNamespace>DemoMVC2.Tests</RootNamespace>
+    <AssemblyName>DemoMVC2.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -99,9 +99,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeliveryOnline\DeliveryOnline.csproj">
-      <Project>{BAA0A527-48EE-4ED1-B3AB-F8748A293616}</Project>
-      <Name>DeliveryOnline</Name>
+    <ProjectReference Include="..\DemoMVC2\DemoMVC2.csproj">
+      <Project>{98C760BE-1BBB-467A-BFB8-5983592ED90B}</Project>
+      <Name>DemoMVC2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

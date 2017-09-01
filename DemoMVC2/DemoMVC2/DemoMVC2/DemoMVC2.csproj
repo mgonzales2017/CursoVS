@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BAA0A527-48EE-4ED1-B3AB-F8748A293616}</ProjectGuid>
+    <ProjectGuid>{98C760BE-1BBB-467A-BFB8-5983592ED90B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeliveryOnline</RootNamespace>
-    <AssemblyName>DeliveryOnline</AssemblyName>
+    <RootNamespace>DemoMVC2</RootNamespace>
+    <AssemblyName>DemoMVC2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -46,12 +46,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -149,33 +143,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
-    <Compile Include="Controllers\RepartidorController.cs" />
-    <Compile Include="Controllers\TiendasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AsignarRepPedido.cs" />
-    <Compile Include="Models\Compra.cs" />
-    <Compile Include="Models\DeliveryContext.cs" />
-    <Compile Include="Models\DetalleCompra.cs" />
-    <Compile Include="Models\DetallePedido.cs" />
-    <Compile Include="Models\DetalleVenta.cs" />
-    <Compile Include="Models\Insumo.cs" />
-    <Compile Include="Models\Pedido.cs" />
-    <Compile Include="Models\PrecioTienda.cs" />
     <Compile Include="Models\Producto.cs" />
-    <Compile Include="Models\Repartidor.cs" />
-    <Compile Include="Models\Tienda.cs" />
-    <Compile Include="Models\TiendaUsuario.cs" />
-    <Compile Include="Models\TipoCliente.cs" />
-    <Compile Include="Models\TipoDocuCorrelativo.cs" />
-    <Compile Include="Models\TipoDocuVenta.cs" />
-    <Compile Include="Models\TiposMenu.cs" />
-    <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,26 +187,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Personas\Create.cshtml" />
-    <Content Include="Views\Personas\Delete.cshtml" />
-    <Content Include="Views\Personas\Details.cshtml" />
-    <Content Include="Views\Personas\Edit.cshtml" />
-    <Content Include="Views\Personas\Index.cshtml" />
-    <Content Include="Views\Repartidor\Create.cshtml" />
-    <Content Include="Views\Repartidor\Delete.cshtml" />
-    <Content Include="Views\Repartidor\Details.cshtml" />
-    <Content Include="Views\Repartidor\Edit.cshtml" />
-    <Content Include="Views\Repartidor\Index.cshtml" />
-    <Content Include="Views\Tiendas\Create.cshtml" />
-    <Content Include="Views\Tiendas\Delete.cshtml" />
-    <Content Include="Views\Tiendas\Details.cshtml" />
-    <Content Include="Views\Tiendas\Edit.cshtml" />
-    <Content Include="Views\Tiendas\Index.cshtml" />
-    <Content Include="Views\Producto\Create.cshtml" />
-    <Content Include="Views\Producto\Delete.cshtml" />
-    <Content Include="Views\Producto\Details.cshtml" />
-    <Content Include="Views\Producto\Edit.cshtml" />
-    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\Lista.cshtml" />
+    <Content Include="Views\Producto\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,9 +222,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52029</DevelopmentServerPort>
+          <DevelopmentServerPort>51479</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52029/</IISUrl>
+          <IISUrl>http://localhost:51479/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

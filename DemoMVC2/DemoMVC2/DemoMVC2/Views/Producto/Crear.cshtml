@@ -1,0 +1,46 @@
+﻿@model DemoMVC2.Models.Producto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Crear</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Crear", "Producto", FormMethod.Post))
+        {
+            <input type="submit" value="Enviar" />
+            <div>
+                @Html.LabelFor(g => g.ProductoId): @Html.EditorFor(g => g.ProductoId)<br />
+                @Html.ValidationMessageFor(g => g.ProductoId)
+            </div>
+            <div>
+                @Html.LabelFor(g => g.Descripcion): @Html.EditorFor(g => g.Descripcion)<br />
+                @Html.ValidationMessageFor(g => g.Descripcion)
+            </div>
+            <div>
+                @Html.LabelFor(g => g.Precio): @Html.EditorFor(g => g.Precio)<br />
+                @Html.ValidationMessageFor(g => g.Precio)
+            </div>
+            <div>
+                @Html.LabelFor(g => g.Stock): @Html.EditorFor(g => g.Stock)<br />
+                @Html.ValidationMessageFor(g => g.Stock)
+            </div>
+            <div>
+                @Html.LabelFor(g => g.UnidadDeMedida): @Html.EditorFor(g => g.UnidadDeMedida)<br />
+                @Html.ValidationMessageFor(g => g.UnidadDeMedida)
+            </div>
+            <div>
+                @Html.LabelFor(g => g.ImagePath): @Html.EditorFor(g => g.ImagePath)<br />
+                @Html.ValidationMessageFor(g => g.ImagePath)
+            </div>
+
+        }
+    </div>
+</body>
+</html>
