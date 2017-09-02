@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27966d56a59048f588aee28801a7a2e7" Name="Diagram1" ZoomLevel="114" >
+        <EntityTypeShape EntityType="ModelFirst.Cafes" Width="1.5" PointX="6.75" PointY="2.375" />
+        <EntityTypeShape EntityType="ModelFirst.Menus" Width="1.5" PointX="10" PointY="2.5" />
+        <AssociationConnector Association="ModelFirst.MenusCafes" />
+        <EntityTypeShape EntityType="ModelFirst.Teas" Width="1.5" PointX="8" PointY="5.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

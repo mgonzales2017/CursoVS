@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelFirst.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelFirstStoreContainer">
+    <EntitySet Name="Menus" EntityType="ModelFirst.Store.Menus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teas" EntityType="ModelFirst.Store.Teas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cafes" EntityType="ModelFirst.Store.Cafes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MenusCafes" Association="ModelFirst.Store.MenusCafes">
+      <End Role="Menus" EntitySet="Menus" />
+      <End Role="Cafes" EntitySet="Cafes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cafes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Grano" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Menu_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MenusCafes">
+    <End Role="Menus" Type="ModelFirst.Store.Menus" Multiplicity="1" />
+    <End Role="Cafes" Type="ModelFirst.Store.Cafes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cafes">
+        <PropertyRef Name="Menu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelFirst" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelFirstContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Menus" EntityType="ModelFirst.Menus" />
+          <AssociationSet Name="MenusCafes" Association="ModelFirst.MenusCafes">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Cafes" EntitySet="Cafes" />
+          </AssociationSet>
+          <EntitySet Name="Teas" EntityType="ModelFirst.Teas" />
+          <EntitySet Name="Cafes" EntityType="ModelFirst.Cafes" />
+        </EntityContainer>
+        <EntityType Name="Cafes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Grano" Type="String" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="ModelFirst.MenusCafes" FromRole="Cafes" ToRole="Menus" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Cafes" Relationship="ModelFirst.MenusCafes" FromRole="Menus" ToRole="Cafes" />
+        </EntityType>
+        <Association Name="MenusCafes">
+          <End Type="ModelFirst.Menus" Role="Menus" Multiplicity="1" />
+          <End Type="ModelFirst.Cafes" Role="Cafes" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Teas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelFirstStoreContainer" CdmEntityContainer="ModelFirstContainer">
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirst.Menus)">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teas">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirst.Teas)">
+        <MappingFragment StoreEntitySet="Teas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cafes">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelFirst.Cafes)">
+        <MappingFragment StoreEntitySet="Cafes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Grano" ColumnName="Grano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MenusCafes" TypeName="ModelFirst.MenusCafes" StoreEntitySet="Cafes">
+      <EndProperty Name="Menus">
+        <ScalarProperty Name="Id" ColumnName="Menu_Id" />
+      </EndProperty>
+      <EndProperty Name="Cafes">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
