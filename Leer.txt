@@ -1,0 +1,30 @@
+-estado de un archivo 
+   git status
+
+
+vi archivo.doc
+
+
+-para salir del vi y guardar
+ esc :x enter
+
+git add -A
+git commit -m "mensaje"
+git push
+
+
+
+Profe 
+------
+https://github.com/Epyon99/LourtecVS.git
+
+
+Package Manager console
+------------------------
+Update-Database
+Enable-Migrations -ContextTypeName EFDemo.CodeFirst.MenuContext
+Update-Database -Verbose -Force
+
+Cadena de conexion
+------------------
+<add name="CodeFirst" connectionString="data source=(localdb)\MSSQLLocalDB;initial catalog=CodeFirst;integrated security=True;" providerName="System.Data.SqlClient" />
