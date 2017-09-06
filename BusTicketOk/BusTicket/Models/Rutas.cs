@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusTicket.Models
 {
-    public struct Rutas
+    public class Rutas
     {
         public string Chofer { get; set; }
         public string Compania { get; set; }

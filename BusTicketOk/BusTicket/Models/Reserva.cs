@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusTicket.Models
 {
-    public struct Reserva
+    public class Reserva
     {
         private Localizacion destino;
         private Localizacion salida;

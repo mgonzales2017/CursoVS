@@ -1,18 +1,14 @@
-﻿using BusTicket.Models;
+﻿using Newtonsoft.Json;
+using BusTicket.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Configuration;
 
 namespace BusTicket
 {
@@ -25,63 +21,35 @@ namespace BusTicket
         public List<Rutas> Rutas { get; set; }
         public List<Rutas> Resultados { get; set; }
 
-        public List<Localizacion> Estaciones { get; set; }
         public MainWindow()
         {
-            Estaciones = new List<Localizacion>()
-            {
-                new Localizacion()
-                {
-                    Ciudad = "Lima",
-                    Estacion = "Lima Central",
-                    Estado = "Lima",
-                    Pais = "Peru",
-                },
-                new Localizacion()
-                {
-                    Ciudad = "Trujillo",
-                    Estacion ="Central Trujillo",
-                    Estado = "Trujillo",
-                    Pais = "Peru",
-                }
-            };
-
-            Reserva = new Reserva()
-            {
-                Destino = Estaciones[0],
-                Salida = Estaciones[1],
-                Fecha = DateTime.Now,
-            };
-
-            Rutas = new List<Models.Rutas>()
-            {
-                new Rutas()
-                {
-                    Chofer = "MC",
-                    Compania = "L",
-                    Estaciones = Estaciones,
-                    FechaFin = DateTime.Now.AddDays(2),
-                    FechaInicio = DateTime.Now,
-                    Id = Guid.NewGuid(),
-                },
-                new Rutas()
-                {
-                    Chofer = "XYZ",
-                    Compania = "Z",
-                    Estaciones = Estaciones,
-                    FechaFin = DateTime.Now.AddDays(12),
-                    FechaInicio = DateTime.Now.AddDays(10),
-                    Id = Guid.NewGuid(),
-                }
-            };
+            //Rutas = new List<Models.Rutas>()
+            //{
+            //    new Rutas()
+            //    {
+            //        Chofer = "MC",
+            //        Compania = "L",
+            //        Estaciones = Estaciones,
+            //        FechaFin = DateTime.Now.AddDays(2),
+            //        FechaInicio = DateTime.Now,
+            //        Id = Guid.NewGuid(),
+            //    },
+            //    new Rutas()
+            //    {
+            //        Chofer = "XYZ",
+            //        Compania = "Z",
+            //        Estaciones = Estaciones,
+            //        FechaFin = DateTime.Now.AddDays(12),
+            //        FechaInicio = DateTime.Now.AddDays(10),
+            //        Id = Guid.NewGuid(),
+            //    }
+            //};
 
             InitializeComponent();
 
-            Origen.ItemsSource = Estaciones;
-            Origen.SelectedItem = Reserva.Salida;
-            Destino.ItemsSource = Estaciones;
-            Destino.SelectedItem = Reserva.Destino;
-            DiaViaje.SelectedDate = Reserva.Fecha;
+            CargarEstaciones(Origen,3);
+            CargarEstaciones(Destino,5);
+            DiaViaje.SelectedDate = DateTime.Now;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -100,6 +68,23 @@ namespace BusTicket
             query = Rutas.Where(g => true).Select(g => g);
             Resultados = query.ToList();
             LVResultados.ItemsSource = Resultados;
+        }
+
+        public void CargarEstaciones(ComboBox control,int indice) {
+
+            string filepath = ConfigurationSettings.AppSettings.Get("RutaDatos") + "Localizacion.JSON";
+            IFormatter formatter = new SoapFormatter();
+            FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.ReadWrite);
+            string jsonStorage;
+            using (StreamReader sr = new StreamReader(fs))
+            {
+                jsonStorage = sr.ReadToEnd();
+            }
+            var estaciones = JsonConvert.DeserializeObject<List<Localizacion>>(jsonStorage);
+            control.ItemsSource = estaciones;
+            control.SelectedIndex = indice;
+            fs.Close();
+
         }
     }
 }

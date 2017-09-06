@@ -1,0 +1,13 @@
+[{"id":"1","estado":"Machala","ciudad":"Machala","pais":"Ecuador","estacion":"Terminal Machala"},
+{"id":"2","estado":"Huaquillas","ciudad":"Huaquillas","pais":"Ecuador","estacion":"Terminal Huaquillas"},
+{"id":"3","estado":"Tumbes","ciudad":"Tumbes","pais":"Peru","estacion":"Terminal Tumbes"},
+{"id":"4","estado":"Piura","ciudad":"Mancora","pais":"Peru","estacion":"Terminal Mancora"},
+{"id":"5","estado":"Piura","ciudad":"Talara","pais":"Peru","estacion":"Terminal Talara"},
+{"id":"6","estado":"Piura","ciudad":"Sullana","pais":"Peru","estacion":"Terminal Sullana"},
+{"id":"7","estado":"Piura","ciudad":"Piura","pais":"Peru","estacion":"Av. Sanchez Cerro"},
+{"id":"8","estado":"Lambayeque","ciudad":"Chiclayo","pais":"Peru","estacion":"Terminal Chiclayo"},
+{"id":"9","estado":"La Libertad","ciudad":"Trujillo","pais":"Peru","estacion":"Terrapuerto Internacional"},
+{"id":"10","estado":"La Libertad","ciudad":"Trujillo","pais":"Peru","estacion":"Av. Juan Pablo"},
+{"id":"11","estado":"Ancash","ciudad":"Chimbote","pais":"Peru","estacion":"Terminal Chimbote"},
+{"id":"12","estado":"Lima","ciudad":"Lima","pais":"Peru","estacion":"Terminal Plaza Norte"},
+{"id":"13","estado":"Lima","ciudad":"Lima","pais":"Peru","estacion":"La Victoria"}]

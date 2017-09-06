@@ -91,14 +91,15 @@ namespace Serialization
             Comida pizza = new Comida() { Componente = "Maza, Queso, Salsa de Tomate, Tocino, Aceitunas", Nombre = "Especial" };
             string json = JsonConvert.SerializeObject(pizza);
             FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate);
-            using (StreamWriter sw = new StreamWriter(fs)) {
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
                 sw.WriteLine(json);
             }
             fs.Close();
 
             //Console.ReadKey();
 
-            fs = new FileStream(filepath, FileMode.Open,FileAccess.ReadWrite);
+            fs = new FileStream(filepath, FileMode.Open, FileAccess.ReadWrite);
             string jsonStorage;
             using (StreamReader sr = new StreamReader(fs))
             {
@@ -107,7 +108,7 @@ namespace Serialization
 
             var c = JsonConvert.DeserializeObject<Comida>(jsonStorage);
             // Serializar JSON a XML y Viceversa
-            var transform = JsonConvert.DeserializeXmlNode(jsonStorage,"Comida");
+            var transform = JsonConvert.DeserializeXmlNode(jsonStorage, "Comida");
             var result = JsonConvert.SerializeXmlNode(transform);
             // Serializar JSON a XML y Viceversa
             Console.WriteLine(c.Componente);
