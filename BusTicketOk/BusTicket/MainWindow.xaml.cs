@@ -21,53 +21,59 @@ namespace BusTicket
         public List<Rutas> Rutas { get; set; }
         public List<Rutas> Resultados { get; set; }
 
+        public List<Localizacion> estaciones;
+
         public MainWindow()
         {
-            //Rutas = new List<Models.Rutas>()
-            //{
-            //    new Rutas()
-            //    {
-            //        Chofer = "MC",
-            //        Compania = "L",
-            //        Estaciones = Estaciones,
-            //        FechaFin = DateTime.Now.AddDays(2),
-            //        FechaInicio = DateTime.Now,
-            //        Id = Guid.NewGuid(),
-            //    },
-            //    new Rutas()
-            //    {
-            //        Chofer = "XYZ",
-            //        Compania = "Z",
-            //        Estaciones = Estaciones,
-            //        FechaFin = DateTime.Now.AddDays(12),
-            //        FechaInicio = DateTime.Now.AddDays(10),
-            //        Id = Guid.NewGuid(),
-            //    }
-            //};
-
             InitializeComponent();
 
             CargarEstaciones(Origen,3);
             CargarEstaciones(Destino,5);
-            DiaViaje.SelectedDate = DateTime.Now;
+            FechaViaje.SelectedDate = DateTime.Now;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BuscarViaje(Reserva);
+            var reserva = new Reserva();
+            var origen = new Localizacion();
+            var destino = new Localizacion();
+
+            origen = estaciones[Origen.SelectedIndex];
+            destino = estaciones[Destino.SelectedIndex];
+
+            reserva.Origen = origen;
+            reserva.Destino = destino;
+            reserva.Fecha = (DateTime)FechaViaje.SelectedDate;
+            
+            BuscarViaje(reserva);
         }
 
         public void BuscarViaje(Reserva reserva)
         {
-            var query = from q in Rutas
-                        where q.Estaciones.Contains(reserva.Destino) &&
-                        q.Estaciones.Contains(reserva.Salida) &&
-                        q.FechaInicio >= reserva.Fecha
+            var rutas = ObtenerRutas();
+            var query = from q in rutas
+                        where q.Destino.Ciudad.Equals(reserva.Destino.Ciudad) &&
+                        q.Origen.Ciudad.Equals(reserva.Origen.Ciudad) &&
+                        (reserva.Fecha.ToString("dd/MM/yyyy").Equals(q.FechaInicio.ToString("dd/MM/yyyy")))
                         select q;
 
-            query = Rutas.Where(g => true).Select(g => g);
+            //query = Rutas.Where(g => true).Select(g => g);
             Resultados = query.ToList();
             LVResultados.ItemsSource = Resultados;
+        }
+
+        public List<Rutas> ObtenerRutas() {
+            string filepath = ConfigurationSettings.AppSettings.Get("RutaDatos") + "Rutas.JSON";
+            IFormatter formatter = new SoapFormatter();
+            FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.ReadWrite);
+            string jsonStorage;
+            using (StreamReader sr = new StreamReader(fs))
+            {
+                jsonStorage = sr.ReadToEnd();
+            }
+            var rutas = JsonConvert.DeserializeObject<List<Rutas>>(jsonStorage);
+            fs.Close();
+            return rutas;
         }
 
         public void CargarEstaciones(ComboBox control,int indice) {
@@ -80,7 +86,7 @@ namespace BusTicket
             {
                 jsonStorage = sr.ReadToEnd();
             }
-            var estaciones = JsonConvert.DeserializeObject<List<Localizacion>>(jsonStorage);
+            estaciones = JsonConvert.DeserializeObject<List<Localizacion>>(jsonStorage);
             control.ItemsSource = estaciones;
             control.SelectedIndex = indice;
             fs.Close();

@@ -9,7 +9,7 @@ namespace BusTicket.Models
     public class Reserva
     {
         private Localizacion destino;
-        private Localizacion salida;
+        private Localizacion origen;
         private DateTime fecha;
 
         public Localizacion Destino
@@ -24,15 +24,15 @@ namespace BusTicket.Models
             }
         }
 
-        public Localizacion Salida
+        public Localizacion Origen
         {
             get
             {
-                return salida;
+                return origen;
             }
             set
             {
-                salida = value;
+                origen = value;
             }
         }
 

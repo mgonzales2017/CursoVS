@@ -97,7 +97,7 @@ namespace BusTicket
                         q.FechaInicio >= reserva.Fecha
                         select q;
 
-            query = Rutas.Where(g => true).Select(g => g);
+            //query = Rutas.Where(g => true).Select(g => g);
             Resultados = query.ToList();
             LVResultados.ItemsSource = Resultados;
         }
