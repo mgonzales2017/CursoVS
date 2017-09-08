@@ -75,6 +75,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Rutas.cs" />
     <Compile Include="Models\Localizacion.cs" />
     <Compile Include="Models\Reserva.cs" />
@@ -96,14 +97,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="BusTicket.ruleset" />
+    <None Include="Datos\Localizacion.JSON" />
+    <None Include="Datos\Reserva.JSON" />
+    <None Include="Datos\Rutas.JSON" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Rutas\Localizacion.JSON" />
-    <None Include="Rutas\Reserva.JSON" />
-    <None Include="Rutas\Rutas.JSON" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

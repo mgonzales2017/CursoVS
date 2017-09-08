@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace BusTicket.Models
 {
+    [Serializable]
     public class Rutas : ISerializable
     {
         public int Id { get; set; }

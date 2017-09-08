@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BusTicket"
         mc:Ignorable="d"
-        Title="Aplicacion" Height="475.572" Width="832.252">
-    <Grid>
+        Title="Aplicacion" Height="695.572" Width="877.252">
+    <Grid Margin="0,0,0,2">
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TICKETS PARA VIAJES" VerticalAlignment="Top" Height="41" Width="497" FontSize="22" FontWeight="Bold"/>
-        <TabControl HorizontalAlignment="Left" Height="379" Margin="10,56,0,0" VerticalAlignment="Top" Width="804">
-            <TabItem Header="TabItem">
+        <TabControl x:Name="Tab_Reservas" HorizontalAlignment="Left" Height="564" Margin="10,56,0,0" VerticalAlignment="Top" Width="821">
+            <TabItem Header="Itinerario">
                 <StackPanel Margin="0,0,0,-4">
                     <Label Content="Origen"></Label>
                     <ComboBox x:Name="Origen" ></ComboBox>
@@ -17,15 +17,31 @@
                     <ComboBox x:Name="Destino"></ComboBox>
                     <Label Content="Fecha"></Label>
                     <DatePicker x:Name="FechaViaje" SelectedDateFormat="Short"></DatePicker>
-                    <Button Content="Buscar" Click="Button_Click"></Button>
-                    <ListView x:Name="LVResultados" Height="187"></ListView>
+                    <Button Content="Buscar" Click="Button_Click" Height="30"></Button>
+                    <ListView x:Name="LVResultados" Height="187" MouseDoubleClick="btn_Comprar_Click"></ListView>
+                    <Button x:Name="btn_Comprar" Content="Comprar Boleto" Height="30" Click="btn_Comprar_Click"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="TabItem">
-                <StackPanel Orientation="Horizontal" Background="#FFE5E5E5">
-                    <Button></Button>
-                    <Button></Button>
-                    <ComboBox></ComboBox>
+            <TabItem Header="Reserva">
+                <StackPanel Orientation="Vertical">
+                    <Rectangle Fill="#FFF4F4F5" Stroke="Black" Height="150" />
+                    <Label x:Name="label" Content="DNI"/>
+                    <TextBox x:Name="txt_DNI" Height="23" TextWrapping="Wrap"/>
+                    <Label x:Name="label1" Content="Nombre"/>
+                    <TextBox x:Name="txt_Nombre" Height="23" TextWrapping="Wrap"/>
+                    <Label x:Name="label2" Content="Apellidos"/>
+                    <TextBox x:Name="txt_Apellidos" Height="23" TextWrapping="Wrap"/>
+                    <Label x:Name="label3" Content="Fecha Nacimiento"/>
+                    <DatePicker x:Name="dpk_FechaNac"/>
+                    <Label x:Name="label4" Content="Sexo"/>
+                    <RadioButton x:Name="rbl_Sexo" Content="Masculino" IsChecked="True" GroupName="Sexo"/>
+                    <RadioButton x:Name="rbl_Sexo1" Content="Femenino" GroupName="Sexo"/>
+                    <Label x:Name="label5" Content="Asiento"/>
+                    <TextBox x:Name="txt_Asiento" Height="23" TextWrapping="Wrap"/>
+                    <Label x:Name="label6" Content="Costo:"/>
+                    <TextBox x:Name="txt_Costo" Height="23" TextWrapping="Wrap"/>
+                    <Button x:Name="btn_ComprarBoleto" Content="Comprar" Height="30" Click="btn_ComprarBoleto_Click"/>
+
                 </StackPanel>
             </TabItem>
         </TabControl>
