@@ -109,27 +109,38 @@ namespace BusTicket
 
         private void btn_ComprarBoleto_Click(object sender, RoutedEventArgs e)
         {
-            Reserva.Cliente = new Cliente();
-            string filepath = $"{ConfigurationSettings.AppSettings.Get("RutaDatos")}{txt_DNI.Text}_{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}.xml";
-
-
-            Reserva.Cliente.Dni = txt_DNI.Text;
-            Reserva.Cliente.Nombre = txt_Nombre.Text;
-            Reserva.Cliente.Apellido = txt_Apellidos.Text;
-            Reserva.Cliente.FechaNacimiento = (DateTime)dpk_FechaNac.SelectedDate;
-            Reserva.Cliente.Dni = txt_DNI.Text;
-            if (rbl_Sexo.IsChecked.Value)
+            try
             {
-                Reserva.Cliente.Sexo = "M";
-            }
-            else {
-                Reserva.Cliente.Sexo = "F";
-            }
+                Reserva.Cliente = new Cliente();
+                string filepath = $"{ConfigurationSettings.AppSettings.Get("RutaDatos")}{txt_DNI.Text}_{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}.xml";
 
-            IFormatter formatter = new SoapFormatter();
-            FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate);
-            formatter.Serialize(fs, Reserva);
-            fs.Close();
+                Reserva.Cliente.Dni = txt_DNI.Text;
+                Reserva.Cliente.Nombre = txt_Nombre.Text;
+                Reserva.Cliente.Apellido = txt_Apellidos.Text;
+                Reserva.Cliente.FechaNacimiento = (DateTime)dpk_FechaNac.SelectedDate;
+                Reserva.Cliente.Dni = txt_DNI.Text;
+                if (rbl_Sexo.IsChecked.Value)
+                {
+                    Reserva.Cliente.Sexo = "M";
+                }
+                else
+                {
+                    Reserva.Cliente.Sexo = "F";
+                }
+                Reserva.Asiento = Convert.ToInt16(txt_Asiento.Text);
+                Reserva.Costo = (float)Convert.ToDecimal(txt_Costo.Text);
+                Reserva.Id = 1;
+                Reserva.Estado = 1;
+
+                IFormatter formatter = new SoapFormatter();
+                FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate);
+                formatter.Serialize(fs, Reserva);
+                fs.Close();
+                MessageBox.Show("La compra del Boleto de Viaje se realizó correctamente.", "Compra de Ticket", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Compra de Ticket", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }
