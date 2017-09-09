@@ -6,28 +6,54 @@ using System.Text;
 using System.Threading.Tasks;
 using UCV.Comun.Modelos;
 using UCV.DataBaseAccess.Servicios.EntityContext;
+using System.Transactions;
+using static UCV.DataBaseAccess.Servicios.EntityContext.SQLContexto;
 
 namespace Data.UCV.DataBaseAccess.Servicios
 {
-    
+
 
     public class ServicioCompania : IServiciosCompania
     {
         SQLContexto db;
 
-        public ServicioCompania(){
+        public ServicioCompania() {
             db = new SQLContexto();
         }
 
         public bool DeleteCompania(Compania compania)
         {
-            throw new NotImplementedException();
+            var c = db.Companias.FirstOrDefault(g => g.Id == compania.Id);
+            try
+            {
+                db.Companias.Remove(c);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex) {
+                return false;
+            }
         }
 
-        public List<Compania> GetCompania()
+        public List<Compania> GetCompanias()
         {
             //SELECT * FROM Companias
-            return db.Companias.ToList();
+            return db.Companias.ToList().Select(g=>new Compania {
+                Id=g.Id,
+                Ruc=g.Ruc,
+                Calificacion= g.Calificacion
+            }).ToList();
+
+        }
+
+        public List<Compania> GetCompanias(int calificacion)
+        {
+            return db.Companias.Where(g => g.Calificacion > calificacion).ToList();
+        }
+
+        public List<Compania> GetCompanias(string ruc)
+        {
+            return db.Companias.Where(g => g.Ruc.Contains(ruc)).ToList();
         }
 
         public void SaveCompania(Compania Compania)
@@ -80,7 +106,41 @@ namespace Data.UCV.DataBaseAccess.Servicios
 
         public void UpdateCompania(Compania compania)
         {
-            throw new NotImplementedException();
+            //formas de hacer busqueda
+
+            IEnumerable<Compania> collection = db.Companias.Where(g => g.Id == compania.Id);
+            ////el primer elemento siempre
+            //collection.FirstOrDefault();
+            ////devuelve el unico elemento en la coleccion, si hay mas de uno           
+            //collection.Single();
+
+            ////Puede devolver un valor por defecto ya sea null o vacio
+            //Compania c = db.Companias.FirstOrDefault(g => g.Id == compania.Id);
+            ////arroja una excepcion si no hay ningun resultado o hay null
+
+            //Compania single = db.Companias.Single(g => g.Id == compania.Id);
+
+            Compania c = db.Companias.FirstOrDefault(g => g.Id == compania.Id);
+
+            c.Ruc = compania.Ruc;
+            c.Calificacion = compania.Calificacion;
+
+            //recuperar un valor sin consulta
+            //db.Entry(compania).State = System.Data.Entity.EntityState.Modified;
+            //db.Entry(compania).CurrentValues();
+
+            db.SaveChanges();
+
+        }
+
+        public void UpdateCompania(Guid companiaId, Compania compania) 
+        {
+            
+        }
+
+        public void UpdateCompania(Guid companiaId, string  ruc, int calificacion)
+        {
+
         }
     }
 }

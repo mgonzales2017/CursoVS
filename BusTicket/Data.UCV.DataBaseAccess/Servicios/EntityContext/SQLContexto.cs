@@ -10,6 +10,12 @@ namespace UCV.DataBaseAccess.Servicios.EntityContext
 {
     public class SQLContexto : DbContext
     {
+
+        public class SqlAnalisisContexto : DbContext
+        {
+            public DbSet<Ruta> Rutas { get; set; }
+        }
+
         public SQLContexto() : base("SQLContexto")
         {
             

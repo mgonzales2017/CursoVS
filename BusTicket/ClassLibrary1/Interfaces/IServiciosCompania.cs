@@ -9,7 +9,11 @@ namespace UCV.Comun.Interfaces
 {
     public interface IServiciosCompania
     {
-        List<Compania> GetCompania();
+        List<Compania> GetCompanias();
+
+        List<Compania> GetCompanias(int calificacion);
+
+        List<Compania> GetCompanias(string ruc);
 
         void SaveCompania(Compania compania);
 
