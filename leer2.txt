@@ -1,0 +1,6 @@
+Entrar Package Manager Console
+
+Default project: Seleccionar el Proyecto de DataBase
+
+Update-Database -Verbose 
+Enabled-Migrations
