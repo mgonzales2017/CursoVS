@@ -98,7 +98,6 @@
     </EmbeddedResource>
     <None Include="BusTicket.ruleset" />
     <None Include="Datos\Localizacion.JSON" />
-    <None Include="Datos\Reserva.JSON" />
     <None Include="Datos\Rutas.JSON" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

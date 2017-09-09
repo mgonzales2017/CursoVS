@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTicket", "BusTicket\BusTicket.csproj", "{24D6B4FA-25F7-4E94-A435-525D34426E96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCV.Comun", "ClassLibrary1\UCV.Comun.csproj", "{B768A08E-55B0-4D38-B147-795D289AEBD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCV.DataBaseAccess", "Data.UCV.DataBaseAccess\UCV.DataBaseAccess.csproj", "{D7317E10-3BA2-40F4-A6FE-CD5630D81439}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{24D6B4FA-25F7-4E94-A435-525D34426E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24D6B4FA-25F7-4E94-A435-525D34426E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24D6B4FA-25F7-4E94-A435-525D34426E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B768A08E-55B0-4D38-B147-795D289AEBD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B768A08E-55B0-4D38-B147-795D289AEBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B768A08E-55B0-4D38-B147-795D289AEBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B768A08E-55B0-4D38-B147-795D289AEBD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7317E10-3BA2-40F4-A6FE-CD5630D81439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7317E10-3BA2-40F4-A6FE-CD5630D81439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7317E10-3BA2-40F4-A6FE-CD5630D81439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7317E10-3BA2-40F4-A6FE-CD5630D81439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
