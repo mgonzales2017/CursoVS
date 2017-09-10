@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UCV.Comun.Modelos;
 
-namespace ClassLibrary1.Interfaces
+namespace UCV.Comun.Interfaces
 {
-    interface IServiciosUsuario
+    public interface IServiciosUsuario
     {
         List<Usuario> GetUsuario();
 
@@ -18,5 +18,8 @@ namespace ClassLibrary1.Interfaces
         void UpdateUsuario(Usuario usuario);
 
         bool DeleteUsuario(Usuario usuario);
+
+        Usuario Login(Usuario usuario);
+
     }
 }

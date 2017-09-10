@@ -13,3 +13,4 @@ http://linq101.nilzorblog.com/linq101-lambda.php
 https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b
 https://msdn.microsoft.com/en-us/library/gg509017.aspx
 https://msdn.microsoft.com/en-us/library/dn456843(v=vs.113).aspx
+http://www.dofactory.com/net/design-patterns
