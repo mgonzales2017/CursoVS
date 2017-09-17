@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/UCV.Comun.Modelos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UCV.Comun.Modelos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:53579/ReservaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:53579/ReservaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:complexType name="ArrayOfReserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reserva" nillable="true" type="tns:Reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReserva" nillable="true" type="tns:ArrayOfReserva" />
+  <xs:complexType name="Reserva">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseClass">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Compania" nillable="true" type="tns:Compania" />
+          <xs:element minOccurs="0" name="FechaReserva" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Ruta" nillable="true" type="tns:Ruta" />
+          <xs:element minOccurs="0" name="Usuario" nillable="true" type="tns:Usuario" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Reserva" nillable="true" type="tns:Reserva" />
+  <xs:complexType name="BaseClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseClass" nillable="true" type="tns:BaseClass" />
+  <xs:complexType name="Compania">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseClass">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Calificacion" type="xs:float" />
+          <xs:element minOccurs="0" name="Ruc" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Compania" nillable="true" type="tns:Compania" />
+  <xs:complexType name="Ruta">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseClass">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Compania" nillable="true" type="tns:Compania" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="Paradas" nillable="true" type="q1:ArrayOfKeyValuePairOfintstring" />
+          <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Ruta" nillable="true" type="tns:Ruta" />
+  <xs:complexType name="Usuario">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseClass">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FechaNacimiento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NombreCompleto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+</xs:schema>

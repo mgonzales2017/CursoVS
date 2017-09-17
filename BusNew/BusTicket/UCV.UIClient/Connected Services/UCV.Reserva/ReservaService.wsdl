@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReservaService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:53579/ReservaService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:53579/ReservaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:53579/ReservaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UCV.Comun.Modelos" />
+      <xsd:import schemaLocation="http://localhost:53579/ReservaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReservaService_GetReservas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservas" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservasById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservasById" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservasById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservasByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservasByIdFecha_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservasByIdFecha" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservasByIdFecha_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservasByIdFechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservaByIdFechaRuta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservaByIdFechaRuta" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_GetReservaByIdFechaRuta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservaByIdFechaRutaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_SaveReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveReserva" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_SaveReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_UpdateReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReserva" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_UpdateReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_DeleteReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReserva" />
+  </wsdl:message>
+  <wsdl:message name="IReservaService_DeleteReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReservaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReservaService">
+    <wsdl:operation name="GetReservas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/GetReservas" message="tns:IReservaService_GetReservas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/GetReservasResponse" message="tns:IReservaService_GetReservas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservasById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/GetReservasById" message="tns:IReservaService_GetReservasById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/GetReservasByIdResponse" message="tns:IReservaService_GetReservasById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservasByIdFecha">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/GetReservasByIdFecha" message="tns:IReservaService_GetReservasByIdFecha_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/GetReservasByIdFechaResponse" message="tns:IReservaService_GetReservasByIdFecha_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservaByIdFechaRuta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/GetReservaByIdFechaRuta" message="tns:IReservaService_GetReservaByIdFechaRuta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/GetReservaByIdFechaRutaResponse" message="tns:IReservaService_GetReservaByIdFechaRuta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/SaveReserva" message="tns:IReservaService_SaveReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/SaveReservaResponse" message="tns:IReservaService_SaveReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/UpdateReserva" message="tns:IReservaService_UpdateReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/UpdateReservaResponse" message="tns:IReservaService_UpdateReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservaService/DeleteReserva" message="tns:IReservaService_DeleteReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservaService/DeleteReservaResponse" message="tns:IReservaService_DeleteReserva_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReservaService" type="tns:IReservaService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReservas">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/GetReservas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservasById">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/GetReservasById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservasByIdFecha">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/GetReservasByIdFecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservaByIdFechaRuta">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/GetReservaByIdFechaRuta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveReserva">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/SaveReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReserva">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/UpdateReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReserva">
+      <soap:operation soapAction="http://tempuri.org/IReservaService/DeleteReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReservaService">
+    <wsdl:port name="BasicHttpBinding_IReservaService" binding="tns:BasicHttpBinding_IReservaService">
+      <soap:address location="http://localhost:53579/ReservaService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
