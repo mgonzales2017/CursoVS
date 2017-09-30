@@ -1,0 +1,26 @@
+
+-------IDEAS PARA PROYECTO DE MVC
+
+1)Propuesta: Aplicacion Web: funcional para cliente          |******
+(permitir ver informacion de la empresa, sugerencia) y       |
+back office (Back office: le muestra un menu el cual es 
+dinamico(segun mantenedor) y tiene opciones:  
+inventario de articulos, venta de productos), 
+con login para cada uno.
+2)puede ser citas medicas                                    |**
+3)venta de mascotas con imagenes                             |****
+4) Kardex control de ingresos y salidas de un almacen        |*
+5) sistema de planillas                                      |
+6) ventas de productos, facturas, boletas, tienda            |********
+7) Capacitación Docente: Inscripcion y Certificacion,        |**
+Evaluación de docentes en base a indicadores educativos, 
+que en línea el usuario encargado pueda ver el estado del 
+indicador (Verde - Ambar - Rojo) y si el estado se pinta de 
+rojo pueda también ver que cosa no está cumpliendo y si esta 
+involucra al docente le envíe una alerta para que pueda 
+mantenerse en verde
+8) Compras de Comida OnLine para repartos por Delivery       |*************
+9) venta de un producto cliente o trabajador ,               |
+con actualización de inventario , si es pagado por un 
+trabajador (descuento por planilla), descontarle en su 
+remuneración mensual.

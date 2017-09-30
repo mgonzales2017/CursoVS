@@ -1,0 +1,15 @@
+------------------
+En orden de Importancia y dependencia Cuales de las Ideas a la izquierda se necesitan obligatoriamente
+
+1) Tiendas, Compradores, Usuarios(del sistema), Productos, Menus, Promociones, Favoritos(Afiliados), Repartidores. CRUD
+2) CATÁLOGO DE IMÁGEMES
+3) carrito de compras
+4) Funciones de caja
+5) Estimar el proceso de entrega
+6) Intentar registrar pasarela de pago - Paypal - Stripe - O parecidos
+7) Estado de entrega de comida
+8) Proceso de Entrega / distribucion
+9) Calificaciones de Usuario
+10) Balance diario
+
+----Login

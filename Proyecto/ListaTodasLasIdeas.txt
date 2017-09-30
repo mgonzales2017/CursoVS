@@ -1,0 +1,18 @@
+----------------------Proyecto --------------------------------------------
+Compras de Comida OnLine para repartos por Delivery 
+Proyecto de 20 horas.
+----Login -- Clientes / Tiendas
+----Registrar Tiendas de Comida
+----Registrar Productos/Menus, Insumos, Diferentes tipos de Menu
+----Catalogo con Imagenes
+----Funciones de Caja / Registrar ventas,generar comprobantes de pago(boleta o factura),cancelación de pedido, devolución de dinero
+----Carrito de compras.
+----Proceso de Compra -> Embudo
+----Estimar el proceso de entrega
+----Registros de Usuarios / Administracion
+----Registrar Pensionistas - Afiliados - Clientes fijos
+----Intentar registrar pasarela de pago - Paypal - Stripe - O parecidos
+----Estado de entrega de comida 
+----Balance diario
+----Promociones
+----Calificaciones de Usuario
