@@ -10,24 +10,33 @@ using DeliveryOnline.Models;
 
 namespace DeliveryOnline.Controllers
 {
-    public class PersonasController : Controller
+    public class PersonaController : Controller
     {
-        private DeliveryContext db = new DeliveryContext();
-
-        // GET: Personas
-        public ActionResult Index()
+        IDeliveryContext context;
+        public PersonaController()
         {
-            return View(db.Usuarios.ToList());
+            context = new DeliveryContext();
         }
 
-        // GET: Personas/Details/5
+        public PersonaController(IDeliveryContext c)
+        {
+            context = c;
+        }
+
+        // GET: Persona
+        public ActionResult Index()
+        {
+            return View(context.GetPersonas());
+        }
+
+        // GET: Persona/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Persona persona = db.Usuarios.Find(id);
+            Persona persona = context.GetPersona(id.Value);
             if (persona == null)
             {
                 return HttpNotFound();
@@ -35,37 +44,36 @@ namespace DeliveryOnline.Controllers
             return View(persona);
         }
 
-        // GET: Personas/Create
+        // GET: Persona/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Personas/Create
+        // POST: Persona/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CodigoId,User,Apellidos,Direccion,Email,FonoCelular,Nombre,Password")] Persona persona)
+        public ActionResult Create([Bind(Include = "CodigoId,PersonaField,Apellidos,Direccion,Email,FonoCelular,Nombre,Password")] Persona persona)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(persona);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                persona = context.CrearPersona(persona);
+                return new JsonResult() { Data = persona};
             }
 
             return View(persona);
         }
 
-        // GET: Personas/Edit/5
+        // GET: Persona/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Persona persona = db.Usuarios.Find(id);
+            Persona persona = context.GetPersona(id.Value);
             if (persona == null)
             {
                 return HttpNotFound();
@@ -73,30 +81,31 @@ namespace DeliveryOnline.Controllers
             return View(persona);
         }
 
-        // POST: Personas/Edit/5
+        // POST: Persona/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CodigoId,User,Apellidos,Direccion,Email,FonoCelular,Nombre,Password")] Persona persona)
+        public ActionResult Edit([Bind(Include = "CodigoId,PersonaField,Apellidos,Direccion,Email,FonoCelular,Nombre,Password")] Persona persona)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(persona).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                persona = context.ModificarPersona(persona);
+                //db.Entry(persona).State = EntityState.Modified;
+                //db.SaveChanges();
+                return new JsonResult() {Data = persona};
             }
             return View(persona);
         }
 
-        // GET: Personas/Delete/5
+        // GET: Persona/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Persona persona = db.Usuarios.Find(id);
+            Persona persona = context.GetPersona(id.Value);
             if (persona == null)
             {
                 return HttpNotFound();
@@ -104,14 +113,13 @@ namespace DeliveryOnline.Controllers
             return View(persona);
         }
 
-        // POST: Personas/Delete/5
+        // POST: Persona/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Persona persona = db.Usuarios.Find(id);
-            db.Usuarios.Remove(persona);
-            db.SaveChanges();
+            Persona persona = context.GetPersona(id);
+            context.DeletePersona(persona);
             return RedirectToAction("Index");
         }
 
@@ -119,7 +127,6 @@ namespace DeliveryOnline.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
             }
             base.Dispose(disposing);
         }
