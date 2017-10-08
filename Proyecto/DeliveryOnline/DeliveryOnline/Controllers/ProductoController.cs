@@ -21,6 +21,10 @@ namespace DeliveryOnline.Controllers
             return View(producto.ToList());
         }
 
+        public ActionResult ProductosByTienda(Tienda ) {
+
+        }
+
         // GET: Producto/Details/5
         public ActionResult Details(int? id)
         {

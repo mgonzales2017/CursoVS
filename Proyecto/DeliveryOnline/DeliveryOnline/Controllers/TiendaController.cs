@@ -10,13 +10,17 @@ using DeliveryOnline.Models;
 
 namespace DeliveryOnline.Controllers
 {
-    public class TiendasController : Controller
+    public class TiendaController : Controller
     {
         private DeliveryContext db = new DeliveryContext();
 
         // GET: Tiendas
         public ActionResult Index()
         {
+            return View(db.Tiendas.ToList());
+        }
+
+        public ActionResult UserIndex() {
             return View(db.Tiendas.ToList());
         }
 

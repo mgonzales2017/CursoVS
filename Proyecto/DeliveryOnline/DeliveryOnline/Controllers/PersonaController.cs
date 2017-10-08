@@ -120,7 +120,7 @@ namespace DeliveryOnline.Controllers
         {
             Persona persona = context.GetPersona(id);
             context.DeletePersona(persona);
-            return RedirectToAction("Index");
+            return new JsonResult() { Data = persona };
         }
 
         protected override void Dispose(bool disposing)

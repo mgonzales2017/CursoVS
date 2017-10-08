@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DeliveryOnline.Models.Tienda>
+
+@{
+    ViewBag.Title = "UserIndex";
+}
+
+<h2>Listado de Tiendas</h2>
+
+@foreach (var v in Model)
+{
+<div>
+    <h3>@v.NombreComercial</h3>
+</div>
+<div>
+    <p>@v.RazonSocial</p>
+    @Html.ActionLink("Ver", "Details", new { CodigoId = v.CodigoId });
+
+</div>
+}

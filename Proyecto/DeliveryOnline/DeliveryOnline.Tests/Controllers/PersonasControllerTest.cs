@@ -74,8 +74,23 @@ namespace DeliveryOnline.Tests.Controllers
         }
 
         // DeleteAction
+        [TestMethod]
         public void Delete_Test()
         {
+            //Arrange
+            //crear una nueva persona
+            var codId = Create_Test();
+
+            var controller = new PersonaController(context);
+
+            //Act
+
+            var result = controller.DeleteConfirmed(codId) as JsonResult;
+            var objetoEliminado = context.GetPersona(codId);
+
+
+            //Assert
+            Assert.IsNull(objetoEliminado);
 
         }
 
@@ -87,6 +102,9 @@ namespace DeliveryOnline.Tests.Controllers
         // FindAction
         public void Find_Test()
         {
+            var codId = Create_Test();
+
+            var controller = new PersonaController(context);
 
         }
     }

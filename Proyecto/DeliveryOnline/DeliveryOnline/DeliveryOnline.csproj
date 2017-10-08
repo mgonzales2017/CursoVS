@@ -152,7 +152,7 @@
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\RepartidorController.cs" />
-    <Compile Include="Controllers\TiendasController.cs" />
+    <Compile Include="Controllers\TiendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,16 +226,17 @@
     <Content Include="Views\Repartidor\Details.cshtml" />
     <Content Include="Views\Repartidor\Edit.cshtml" />
     <Content Include="Views\Repartidor\Index.cshtml" />
-    <Content Include="Views\Tiendas\Create.cshtml" />
-    <Content Include="Views\Tiendas\Delete.cshtml" />
-    <Content Include="Views\Tiendas\Details.cshtml" />
-    <Content Include="Views\Tiendas\Edit.cshtml" />
-    <Content Include="Views\Tiendas\Index.cshtml" />
+    <Content Include="Views\Tienda\Create.cshtml" />
+    <Content Include="Views\Tienda\Delete.cshtml" />
+    <Content Include="Views\Tienda\Details.cshtml" />
+    <Content Include="Views\Tienda\Edit.cshtml" />
+    <Content Include="Views\Tienda\Index.cshtml" />
     <Content Include="Views\Producto\Create.cshtml" />
     <Content Include="Views\Producto\Delete.cshtml" />
     <Content Include="Views\Producto\Details.cshtml" />
     <Content Include="Views\Producto\Edit.cshtml" />
     <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Tienda\UserIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
